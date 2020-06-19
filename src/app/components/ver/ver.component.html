@@ -1,0 +1,59 @@
+<mat-toolbar color="primary">
+  Registro Nro {{registro?.id}}
+  <span class="example-spacer"></span>
+  <button (click)="anterior()" *ngIf="indiceRegistro !== -1" [disabled]="indiceRegistro === 0" mat-raised-button color="primary">
+    <mat-icon>keyboard_arrow_left</mat-icon>
+    Anterior
+  </button>
+  <span class="example-spacer"></span>
+  <div *ngIf="indiceRegistro !== -1" >{{indiceRegistro + 1 }} de {{listaRegistros.length}}</div>
+  <span class="example-spacer"></span>
+  <button (click)="siguiente()" *ngIf="indiceRegistro !== -1" [disabled]="listaRegistros.length === indiceRegistro + 1" mat-raised-button color="primary">
+    Siguiente
+    <mat-icon>keyboard_arrow_right</mat-icon>
+  </button>
+
+  <span class="example-spacer"></span>
+  <button (click)="volver()" mat-raised-button color="primary">
+    Volver
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div style="width: 100%; margin-top: 80px;">
+  <mat-spinner *ngIf="cargando" style="margin: auto;"></mat-spinner>
+  <div *ngIf="!cargando" style="width: 60%; margin: 5vh auto;">
+    <div *ngIf="registro?.id">
+      <p *ngIf="registro.fecha" ><b>Fecha:</b> {{registro?.fecha | date: 'dd/MM/yyyy'}}</p>
+      <p *ngIf="registro.nroLicitacion"><b>Nro de Licitacion:</b> {{registro?.nroLicitacion}}</p>
+      <p *ngIf="registro.organizacion"><b>Organizacion:</b> {{registro?.organizacion}}</p>
+      <h1 *ngIf="registro.titulo">{{registro?.titulo}}</h1>
+      <h2 *ngIf="registro.titulo2">{{registro?.titulo2}}</h2>
+      <h2 *ngIf="registro.titulo3">{{registro?.titulo3}}</h2>
+      <h3 *ngIf="registro.observaciones"><b>Observaciones:</b> {{registro?.observaciones}}</h3>
+      <h3 *ngIf="registro.observaciones2"><b>Observaciones 2:</b> {{registro?.observaciones2}}</h3>
+      <h3 *ngIf="registro.observaciones3"><b>Observaciones 3:</b> {{registro?.observaciones3}}</h3>
+      <br>
+      <h3 *ngIf="registro.capitulo"><b>Capitulo:</b> {{registro?.capitulo}}</h3>
+      <h3 *ngIf="registro.nombreLicitacion"><b>Licitación:</b> {{registro?.nombreLicitacion}}</h3>
+      <h3 *ngIf="registro.pregunta"><b>Pregunta</b>: {{registro?.pregunta}}</h3>
+      <h3 *ngIf="registro.palabrasClaves"><b>Palabras claves:</b> {{registro?.palabrasClaves}}</h3>
+      <!-- <p style="white-space: pre-line; text-align: justify;">{{registro.texto}}</p> -->
+      <pre style="white-space: pre-line; text-align: justify; color: blue; font-size: 10pt; font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif; ">
+      {{registro?.texto}}
+    </pre>
+    </div>
+
+    <h1 *ngIf="!registro?.id"> El registro no existe </h1>
+  </div>
+</div>
+
+<style>
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .row:hover {
+    background: whitesmoke;
+  }
+</style>

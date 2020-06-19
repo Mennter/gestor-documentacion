@@ -1,0 +1,117 @@
+<mat-toolbar color="primary">
+  {{ editar ? 'Editar registro' : 'Nuevo registro'}}
+  <span class="example-spacer"></span>
+  <button (click)="anterior()" *ngIf="indiceRegistro !== -1 && editar" [disabled]="indiceRegistro === 0" mat-raised-button color="primary">
+    <mat-icon>keyboard_arrow_left</mat-icon>
+    Anterior
+  </button>
+  <span class="example-spacer"></span>
+  <div *ngIf="indiceRegistro !== -1 && editar" >{{indiceRegistro + 1 }} de {{listaRegistros.length}}</div>
+  <span class="example-spacer"></span>
+  <button (click)="siguiente()" *ngIf="indiceRegistro !== -1 && editar" [disabled]="listaRegistros.length === indiceRegistro + 1" mat-raised-button color="primary">
+    Siguiente
+    <mat-icon>keyboard_arrow_right</mat-icon>
+  </button>
+
+  <span class="example-spacer"></span>
+  <button (click)="volver()" mat-raised-button color="primary">
+    Volver
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div style="width: 100%; margin-top: 80px;">
+  <mat-spinner *ngIf="cargando" style="margin: auto;"></mat-spinner>
+
+  <form [formGroup]="formulario"  *ngIf="!cargando"  (ngSubmit)="saveRegistro()" style="width: 60%; margin: 5vh auto;">
+    <mat-form-field class="example-full-width">
+      <mat-label>Fecha</mat-label>
+      <input matInput formControlName="fecha" [matDatepicker]="picker">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Nro Licitacion</mat-label>
+      <input matInput maxlength="250" formControlName="nroLicitacion">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Organizacion</mat-label>
+      <input matInput maxlength="250" formControlName="organizacion">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Nombre Licitacion</mat-label>
+      <input matInput maxlength="250" formControlName="nombreLicitacion">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Capitulo</mat-label>
+      <input matInput maxlength="250" formControlName="capitulo">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Titulo</mat-label>
+      <input matInput maxlength="250" formControlName="titulo">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Titulo 2</mat-label>
+      <input matInput maxlength="250" formControlName="titulo2">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Titulo 3</mat-label>
+      <input matInput maxlength="250" formControlName="titulo3">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Observaciones</mat-label>
+      <input matInput maxlength="250" formControlName="observaciones">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Observaciones 2</mat-label>
+      <input matInput maxlength="250" formControlName="observaciones2">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Observaciones 3</mat-label>
+      <input matInput maxlength="250" formControlName="observaciones3">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Palabras Claves</mat-label>
+      <input matInput maxlength="250" formControlName="palabrasClaves">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Pregunta</mat-label>
+      <input matInput formControlName="pregunta">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Texto</mat-label>
+      <textarea matInput rows="30" cols="60" formControlName="texto"></textarea>
+    </mat-form-field>
+
+    <mat-checkbox style="margin: 10px 0;" formControlName="borrado">Borrado</mat-checkbox>
+
+
+    <button mat-raised-button class="example-full-width" style="margin: 10px 0;" [disabled]="!formulario.valid" color="primary">{{this.editar? 'Modificar' : 'Guardar'}}</button>
+
+  </form>
+</div>
+
+<style>
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+
+
+  .example-full-width {
+    width: 100%;
+  }
+
+</style>
