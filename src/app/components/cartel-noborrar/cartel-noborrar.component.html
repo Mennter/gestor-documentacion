@@ -1,0 +1,23 @@
+<h2>Atención!</h2>
+<p>Hay cambios que no estan guardados. ¿Seguro quieres salir del formulario?</p>
+
+<div class="outer">
+  <button class="inner" mat-raised-button (click)="onSiClick()" color="warn">
+    Si
+  </button>
+
+  <button class="inner" mat-raised-button (click)="onNoClick()" color="primary">
+    No
+  </button>
+</div>
+<style>
+  .outer {
+    width: 100%;
+    text-align: center;
+  }
+
+  .inner {
+    display: inline-block;
+    margin: 0 1em;
+  }
+</style>

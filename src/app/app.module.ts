@@ -27,6 +27,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 
 import { MatNativeDateModule } from '@angular/material/core';
 
+import {MatDialogModule} from '@angular/material/dialog';
+import { CartelNoborrarComponent } from './components/cartel-noborrar/cartel-noborrar.component';
 
 
 
@@ -35,7 +37,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     AppComponent,
     VerComponent,
     ListaComponent,
-    EditarComponent
+    EditarComponent,
+    CartelNoborrarComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +54,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatButtonModule,
     FormsModule,
     MatIconModule,
+    MatDialogModule,
     MatTooltipModule,
     HttpClientModule,
     ReactiveFormsModule,

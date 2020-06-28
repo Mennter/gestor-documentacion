@@ -3,6 +3,7 @@ import { VerComponent } from './components/ver/ver.component';
 import { ListaComponent } from './components/lista/lista.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { EditarGuard } from './servicios/editar.guard';
 
 
 const routes: Routes = [
@@ -16,7 +17,8 @@ const routes: Routes = [
   },
   {
     path: 'editar/:id',
-    component: EditarComponent
+    component: EditarComponent,
+    canDeactivate: [ EditarGuard ]
   },
   {
     path: 'nuevo',
@@ -25,7 +27,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
