@@ -31,7 +31,7 @@ jobs:
     
     - name: Compilando app
       run: |
-          npm i
+          yarn install
           ng build --prod
           
     - name: Creando imagen de docker
