@@ -32,7 +32,7 @@ jobs:
     - name: Compilando app
       run: |
           yarn install
-          ng build --prod
+          yarn run build -c production
           
     - name: Creando imagen de docker
       uses: docker/build-push-action@v1
