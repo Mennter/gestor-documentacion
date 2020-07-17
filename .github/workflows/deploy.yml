@@ -50,5 +50,5 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: ezequiel2point0/edm
-        tags: ${{ steps.release.outputs.version }}
+        tags: ${{ steps.release.outputs.version }},latest
 
