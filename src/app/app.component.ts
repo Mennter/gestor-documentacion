@@ -1,9 +1,5 @@
-import { RegistroService } from './servicios/registro.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
-import { Subscription } from 'rxjs';
-import { Registro } from './domain/registro';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { VersionService } from './servicios/version.service';
 
 @Component({
   selector: 'app-root',
@@ -12,4 +8,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class AppComponent {
 
+  constructor(
+    private versionService: VersionService
+  ) {
+    this.versionService.set('{{ci-version}}');
+  }
 }
