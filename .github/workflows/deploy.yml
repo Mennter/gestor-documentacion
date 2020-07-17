@@ -11,11 +11,21 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     strategy:
       matrix:
         node-version: [12.x]
     steps: 
     - uses: actions/checkout@v2
+    - id: release
+      uses: rymndhng/release-on-push-action@master
+      with:
+        bump_version_scheme: minor
+    - name: Obtener vesion
+      run: ex -s -c '%s/{{ci-version}}/${{ steps.release.outputs.tag_name }}/g|x' src/app/app.component.ts
+      
+      
     - name: Cache node modules
       uses: actions/cache@v1
       with:
@@ -40,5 +50,5 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: ezequiel2point0/edm
-        tags: latest
+        tags: ${{ steps.release.outputs.version }}
 
