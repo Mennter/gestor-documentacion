@@ -1,5 +1,3 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI
 
 # Controls when the action will run. Triggers the workflow on push or pull request
@@ -17,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Run a one-line script
-    - uses: paulhatch/semantic-version@v2.1.1
+      uses: paulhatch/semantic-version@v2.1.1
       with:
           branch: "master"
           tag_prefix: "v"
